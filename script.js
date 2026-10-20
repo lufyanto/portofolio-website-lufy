@@ -39,4 +39,46 @@ contactForm.addEventListener('submit', async (e) => {
         formStatus.textContent = "Maaf, terjadi kesalahan saat mengirim pesan. Coba lagi nanti.";
         formStatus.style.color = "#ef4444"; // Warna merah
     }
+
+    // Mengambil elemen formulir kontak berdasarkan ID 'contactForm'
+const form = document.getElementById('contactForm');
+const submitBtn = form.querySelector('button[type="submit"]');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    // Access Key Web3Forms Anda
+    formData.append("access_key", "5756fab6-dfa3-4357-8b2b-63a8c0be0140");
+
+    const originalText = submitBtn.textContent;
+
+    // Mengubah status tombol saat proses pengiriman
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Success! Your message has been sent.");
+            form.reset(); // Mengosongkan isian form setelah berhasil
+        } else {
+            alert("Error: " + data.message);
+        }
+
+    } catch (error) {
+        alert("Something went wrong. Please try again.");
+    } finally {
+        // Mengembalikan tombol ke status awal
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }
 });
+});
+
