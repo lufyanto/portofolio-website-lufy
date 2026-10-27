@@ -216,7 +216,117 @@ input:focus, textarea:focus { border-color: var(--main-color); }
 .contact-form button { margin-top: 1rem; border: none; font-size: 1.1rem; }
 
 /* --- Footer --- */
-footer { text-align: center; padding: 2rem; background: var(--second-bg-color); margin-top: 2rem; }
+/* --- Footer Section --- */
+footer {
+    background: var(--second-bg-color);
+    padding: 4rem 10% 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 4rem;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* Kolom deskripsi dibuat lebih lebar */
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-col h3 {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 35px;
+    height: 2px;
+    background: var(--main-color);
+}
+
+.footer-about p {
+    color: #cbd5e1;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+    max-width: 400px;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--main-color);
+    padding-left: 5px; /* Efek bergeser halus saat di-hover */
+}
+
+.social-links {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    background: var(--main-color);
+    color: #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4);
+    border-color: var(--main-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+    font-size: 0.88rem;
+}
+
+/* Responsif Layar Tablet & Smartphone */
+@media (max-width: 991px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
 
 /* --- Responsif (HP & Tablet) --- */
 @media (max-width: 768px) {
